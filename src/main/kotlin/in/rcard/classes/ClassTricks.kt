@@ -51,4 +51,41 @@ object ClassTricks {
             </body>
         </html>
     """.trimIndent()
+
+    // Methods in classes are "final" by default
+    // Also classes are defined as "final" by default
+
+    // Classes visibility in Kotlin is public by default
+    // -------------------------------------------------
+    // public (default) | Visible everywhere
+    // internal         | Visible inside the same module (in Java compiles into "public" 🤷‍)
+    // protected        | Visible inside the same class and subclasses
+    // private          | Visible inside the same file
+
+    // sealed classes are used to restrict the inheritance of a class
+    // All subclasses of a sealed class must be declared in the same file
+    // Interesting reading about sealed interfaces: https://jorgecastillo.dev/sealed-interfaces-kotlin
+
+    // Private constructors
+    class Secretive private constructor()
+
+    // Data classes has a built-in copy method, since they are immutable by default
+    data class User(val name: String, val age: Int)
+    val rcardin = User("Rcardin", 26)
+    val rcardinWithRealAge = rcardin.copy(age = 40) // :(
+
+    // Decorators/Delegation is a first-class citizen in Kotlin
+    interface Base {
+        fun print()
+        // And many other methods
+    }
+    class BaseImpl(val x: Int) : Base {
+        override fun print() { print(x) }
+        // And many other methods implemented
+    }
+    class Decorated(val b: BaseImpl) : Base by b {
+        override fun print() {
+            print("Decorated: ${b.x}")
+        }
+    }
 }
