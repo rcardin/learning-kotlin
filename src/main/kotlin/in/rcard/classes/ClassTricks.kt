@@ -42,4 +42,13 @@ object ClassTricks {
 
             else -> throw Exception("Dirty color")
         }
+
+    // Tripled quoted strings can be multiline and they don't need escaping
+    val html = """
+        <html>
+            <body>
+                <p>Hello, world!</p>
+            </body>
+        </html>
+    """.trimIndent()
 }
