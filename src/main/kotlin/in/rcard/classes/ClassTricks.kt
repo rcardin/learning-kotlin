@@ -88,4 +88,14 @@ object ClassTricks {
             print("Decorated: ${b.x}")
         }
     }
+
+    // We use the object keyword to create an anonymous inner class
+    // window.addMouseListener(object : MouseAdapter() {
+    //     override fun mouseClicked(e: MouseEvent) {
+    //        // ...
+    //     }
+    //     override fun mouseEntered(e: MouseEvent) {
+    //        // ...
+    //     }
+    // })
 }

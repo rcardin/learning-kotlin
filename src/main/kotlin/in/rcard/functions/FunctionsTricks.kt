@@ -51,4 +51,15 @@ object FunctionsTricks {
 
         // Save user to the database
     }
+
+    class Person(val firstName: String, val lastName: String, val age: Int) {
+        companion object {
+            fun create(firstName: String, lastName: String, age: Int) = Person(firstName, lastName, age)
+        }
+    }
+
+    // We can also have extension functions for companion objects
+    fun Person.Companion.fromJSON(json: String): Person {
+        TODO()
+    }
 }
