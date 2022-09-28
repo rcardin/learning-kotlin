@@ -11,4 +11,29 @@ object Lambdas {
 
     // We can move lambdas outside the parentheses if the lambda is the last argument
     val joined = people.joinToString(separator = " ") { p: Person -> p.name } // "Alice Bob"
+
+    // Lambda with receiver
+    // with
+    fun alphabet(): String {
+        val sb = StringBuilder()
+        return with(sb) {
+            for (letter in 'A'..'Z') {
+                this.append(letter)
+            }
+            append("\nNow I know the alphabet!")
+            this.toString()
+        }
+    }
+
+    // apply
+    // Similar to the with function, but it returns the object itself
+    fun alphabet2(): String {
+        val sb = StringBuilder()
+        return sb.apply {
+            for (letter in 'A'..'Z') {
+                append(letter)
+            }
+            append("\nNow I know the alphabet!")
+        }.toString()
+    }
 }
