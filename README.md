@@ -1,3 +1,4 @@
+<a href="https://pinterest.github.io/ktlint/"><img src="https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg" alt="ktlint"></a>
 # Learning Kotlin
 
 I take all the Kotlin examples from the following list of books 🚀:
