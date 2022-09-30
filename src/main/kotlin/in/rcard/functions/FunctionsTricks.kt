@@ -40,6 +40,7 @@ object FunctionsTricks {
 
     // Functions can be declared as local functions
     class User(val id: Int, val name: String, val address: String)
+
     fun saveUser(user: User) {
         fun validate(value: String, fieldName: String) {
             if (value.isEmpty()) {
@@ -56,6 +57,12 @@ object FunctionsTricks {
         companion object {
             fun create(firstName: String, lastName: String, age: Int) = Person(firstName, lastName, age)
         }
+
+        // In Kotlin, it's possible to overload operators
+        operator fun plus(other: Person) =
+            Person(firstName + other.firstName, lastName + other.lastName, age + other.age)
+
+        // The equals function stands for the == operator, whereas the compareTo function stands for the >= operator
     }
 
     // We can also have extension functions for companion objects

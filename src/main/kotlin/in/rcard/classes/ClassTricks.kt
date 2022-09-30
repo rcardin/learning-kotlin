@@ -71,6 +71,7 @@ object ClassTricks {
 
     // Data classes has a built-in copy method, since they are immutable by default
     data class User(val name: String, val age: Int)
+
     val rcardin = User("Rcardin", 26)
     val rcardinWithRealAge = rcardin.copy(age = 40) // :(
 
@@ -79,10 +80,14 @@ object ClassTricks {
         fun print()
         // And many other methods
     }
+
     class BaseImpl(val x: Int) : Base {
-        override fun print() { print(x) }
+        override fun print() {
+            print(x)
+        }
         // And many other methods implemented
     }
+
     class Decorated(val b: BaseImpl) : Base by b {
         override fun print() {
             print("Decorated: ${b.x}")
@@ -98,4 +103,19 @@ object ClassTricks {
     //        // ...
     //     }
     // })
+
+    // Kotlin has deconstruction
+    // val (name, age) = rcardin
+    // Under the hood, the compiler generates the following code:
+    // val name = rcardin.component1()
+    // val age = rcardin.component2()
+
+    // Delegated properties
+    class Person(val name: String) {
+        val emails by lazy { loadEmails(this) }
+
+        private fun loadEmails(person: Person) {
+            TODO("Not yet implemented")
+        }
+    }
 }
