@@ -1,5 +1,7 @@
 package `in`.rcard.functions
 
+import java.util.concurrent.locks.Lock
+
 const val MAX = 100 // This is a constant
 
 fun thisIsAStaticFunction() = println("This is a static function") // Available as a static function
@@ -68,5 +70,25 @@ object FunctionsTricks {
     // We can also have extension functions for companion objects
     fun Person.Companion.fromJSON(json: String): Person {
         TODO()
+    }
+
+    // inline functions are functions that are inlined at compile time: no overhead at runtime, no anonymous classes
+    // created or objects allocated. A function can be inlined if the parameters are read by the function or passed to
+    // another inline function.
+    inline fun <T> synchronized(lock: Lock, action: () -> T): T {
+        lock.lock()
+        try {
+            return action()
+        } finally {
+            lock.unlock()
+        }
+    }
+
+    // The implementation of the try-with-resources in Kotlin is based on the `use` function, defined as an extension
+    // function on the `Closeable` interface
+    fun readFirstLineFromFile(path: String): String {
+        java.io.BufferedReader(java.io.FileReader(path)).use { br ->
+            return br.readLine()
+        }
     }
 }
