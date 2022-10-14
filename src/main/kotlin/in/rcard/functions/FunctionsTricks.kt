@@ -91,4 +91,12 @@ object FunctionsTricks {
             return br.readLine()
         }
     }
+
+    fun strLenSafe(s: String?): Int = s?.length ?: 0 // Safe call operator
+
+    fun sendEmail(email: String) {
+        println("Sending email to $email")
+    }
+    val email: String? = null
+    val unit = email?.let { sendEmail(it) } // Safe call with let
 }
