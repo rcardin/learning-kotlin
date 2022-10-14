@@ -15,4 +15,7 @@ object Generics {
             value.append("!")
         }
     }
+
+    // Reified type parameters on inline functions
+    inline fun <reified T> isA(value: Any) = value is T
 }
